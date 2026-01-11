@@ -37,5 +37,10 @@ This is a basic example which shows you how to solve a common problem:
 library(LSTbook)
 library(LSTextras)
 ## basic example code
+mpg |> 
+  point_plot(cty ~ displ, annot = "model", interval = "none")
+  
+mpg |> 
+  point_plot(cty ~ class, annot = "model", interval = "none")
 ```
 
