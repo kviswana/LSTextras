@@ -39,8 +39,10 @@ jobs:
         run: |
           Rscript -e 'dir.create("dist", showWarnings = FALSE)'
           Rscript -e 'system("R CMD INSTALL --build .")'
-          Rscript -e 'files <- list.files(); files <- files[endsWith(files, c(".zip",".tgz",".tar.gz"))]; print(files); if (length(files)) file.copy(files, "dist", overwrite=TRUE)'
+          Rscript -e 'files <- list.files(); files <- files[endsWith(files,".zip") | endsWith(files,".tgz") | endsWith(files,".tar.gz")]; print(files); if (length(files)) file.copy(files, "dist", overwrite=TRUE)'
           Rscript -e 'print(list.files("dist"))'
+      - name: Show dist contents
+        run: Rscript -e 'print(list.files("dist", full.names=TRUE))'
 
       - name: Upload binaries to GitHub Release
         if: github.event_name == 'release'
