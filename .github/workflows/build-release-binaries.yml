@@ -23,25 +23,25 @@ jobs:
         with:
           use-public-rspm: true
 
-      - uses: r-lib/actions/setup-r-dependencies@v2
-        with:
-          packages: |
-            any::pak
-            any::pkgbuild
-            any::dplyr
-            any::ggplot2
-            any::rlang
-            any::LSTbook
-          needs: |
-            build
-
-      - name: Build binary package
+      - name: Install dependencies (CRAN + LSTbook)
         run: |
-          Rscript -e 'pkgbuild::build(".", dest_path = "dist", binary = TRUE)'
+          Rscript -e 'install.packages(c("remotes","dplyr","ggplot2","rlang"), repos="https://cloud.r-project.org")'
+          Rscript -e 'if (!requireNamespace("LSTbook", quietly=TRUE)) install.packages("LSTbook", repos="https://cloud.r-project.org")'
 
-      - name: List built files
+      # If LSTbook is NOT on CRAN, comment the line above and use this instead:
+      # - name: Install LSTbook from GitHub
+      #   run: |
+      #     Rscript -e 'remotes::install_github("OWNER/LSTbook")'
+
+      - name: Build binary via R CMD INSTALL --build
         shell: bash
         run: |
+          mkdir -p dist
+          R CMD INSTALL --build .
+          # Move built artifacts into dist/
+          mv *.zip dist/ 2>/dev/null || true
+          mv *.tgz dist/ 2>/dev/null || true
+          mv *.tar.gz dist/ 2>/dev/null || true
           ls -la dist
 
       - name: Upload binaries to GitHub Release
