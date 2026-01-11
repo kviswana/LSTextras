@@ -16,3 +16,5 @@ Imports:
 Depends: 
     R (>= 3.5)
 LazyData: true
+URL: https://github.com/kviswana/LSTextras
+BugReports: https://github.com/kviswana/LSTextras/issues
