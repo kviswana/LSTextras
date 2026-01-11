@@ -3,6 +3,7 @@ name: Build release binaries
 on:
   release:
     types: [published]
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -23,28 +24,26 @@ jobs:
         with:
           use-public-rspm: true
 
-      - name: Install dependencies (CRAN + LSTbook)
-        run: |
-          Rscript -e 'install.packages(c("remotes","dplyr","ggplot2","rlang"), repos="https://cloud.r-project.org")'
-          Rscript -e 'if (!requireNamespace("LSTbook", quietly=TRUE)) install.packages("LSTbook", repos="https://cloud.r-project.org")'
+      - name: Install pak
+        run: Rscript -e 'install.packages("pak", repos="https://cloud.r-project.org")'
 
-      # If LSTbook is NOT on CRAN, comment the line above and use this instead:
+      - name: Install package dependencies (from DESCRIPTION)
+        run: Rscript -e 'pak::local_install_deps(dependencies = TRUE)'
+
+      # If LSTbook is NOT on CRAN, add Remotes: in DESCRIPTION (recommended),
+      # OR install it explicitly here and remove it from Imports.
       # - name: Install LSTbook from GitHub
-      #   run: |
-      #     Rscript -e 'remotes::install_github("OWNER/LSTbook")'
+      #   run: Rscript -e 'pak::pkg_install("OWNER/LSTbook")'
 
       - name: Build binary via R CMD INSTALL --build
-        shell: bash
         run: |
-          mkdir -p dist
-          R CMD INSTALL --build .
-          # Move built artifacts into dist/
-          mv *.zip dist/ 2>/dev/null || true
-          mv *.tgz dist/ 2>/dev/null || true
-          mv *.tar.gz dist/ 2>/dev/null || true
-          ls -la dist
+          Rscript -e 'dir.create("dist", showWarnings = FALSE)'
+          Rscript -e 'system("R CMD INSTALL --build .")'
+          Rscript -e 'files <- list.files(pattern="\\.(zip|tgz|tar\\.gz)$"); print(files); file.copy(files, "dist", overwrite=TRUE)'
+          Rscript -e 'print(list.files("dist"))'
 
       - name: Upload binaries to GitHub Release
+        if: github.event_name == 'release'
         uses: softprops/action-gh-release@v2
         with:
           files: |
