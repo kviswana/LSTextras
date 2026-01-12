@@ -24,10 +24,36 @@ Additionally LSTextras provides several specially created synthetic datasets set
 
 You can install the development version of LSTextras like so:
 
+### Windows
+
+First visit: https://github.com/kviswana/LSTextras/releases/download/v0.1.4/LSTextras_0.1.4.zip and save the file to your downloads folder.
+
+Then in R, execute the following commands:
+
 ``` r
-install.packages("pak")
-pak::pkg_install("kviswana/LSTextras")
+## In the following command, substitite your username:
+install.packages("C:/Users/<YOUR_USERNAME>/Downloads/LSTextras_0.1.4.zip", repos = NULL)
+
+## During each session execute the following two commands in this sequence:
+library(LSTbook)
+library(LSTextras)
 ```
+
+### Mac
+
+First visit: https://github.com/kviswana/LSTextras/releases/download/v0.1.4/LSTextras_0.1.4.zip and save the file to your downloads folder.
+
+Then in R, execute the following commands:
+
+``` r
+## In the following command, substitite your username:
+install.packages("~/Downloads/LSTextras_0.1.4.tgz", repos = NULL, type = "binary")
+
+## During each session execute the following two commands in this sequence:
+library(LSTbook)
+library(LSTextras)
+```
+
 
 ## Example
 
