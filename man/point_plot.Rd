@@ -18,7 +18,7 @@ point_plot(
 \arguments{
 \item{D}{A data frame.}
 
-\item{tilde}{A formula like \code{y ~ x}, \code{y ~ x + z}, or \code{y ~ x + z + w}.}
+\item{tilde}{A formula like \code{y ~ x}, \code{y ~ x + z}, \code{y ~ x + z + w}.}
 
 \item{...}{Passed to \code{LSTbook::point_plot()} when \code{annot != "model"}.}
 
@@ -26,7 +26,7 @@ point_plot(
 
 \item{interval}{Kept for compatibility; ignored when \code{annot = "model"}.}
 
-\item{jitter}{Jitter width used when x is categorical.}
+\item{jitter}{Jitter width used when x is categorical (and for y ~ 1 case).}
 
 \item{point_alpha}{Point transparency.}
 
