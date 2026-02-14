@@ -2,6 +2,7 @@
 # LSTextras
 
 <!-- badges: start -->
+[![R-CMD-check](https://github.com/kviswana/LSTextras/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/kviswana/LSTextras/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 I created the LSTextras package to facilitate my teaching approach to business statistics. 
