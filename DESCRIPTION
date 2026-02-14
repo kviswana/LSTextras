@@ -1,9 +1,11 @@
 Package: LSTextras
-Title: What the Package Does (One Line, Title Case)
-Version: 0.1.5
+Title: Small addition to LSTbook package: several data frames plus a small tweak to point_plot
+Version: 0.1.6
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+    person("Viswa", "Viswanathan", , "kv.viswana@gmail.com", role = c("aut", "cre"))
+Description: This package is meant to go with the book "Introduction to Business Statistics: A modeling Approach". 
+It extends the LSTbook package slightly by adding several illustrative data frames and tweaks the point_plot function to 
+handle the case when annot = "model" AND interval = "none". The version in LSTbook fails when interval = "none".
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
