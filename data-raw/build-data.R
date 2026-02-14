@@ -12,8 +12,6 @@ advertising_sales_channel <- readr::read_csv("data-raw/advertising_sales_channel
 age_income_gender_buy <- readr::read_csv("data-raw/age_income_gender_buy.csv", show_col_types = FALSE) |>
   tibble::as_tibble()
 
-age_income_gender_buy <- age_income_gender_buy |> select(-1)
-
 BostonHousing <- readr::read_csv("data-raw/BostonHousing.csv", show_col_types = FALSE) |>
   tibble::as_tibble()
 
@@ -50,7 +48,6 @@ sales_advertising <- readr::read_csv("data-raw/sales_advertising.csv", show_col_
 sales <- readr::read_csv("data-raw/sales.csv", show_col_types = FALSE) |>
   tibble::as_tibble()
 
-sales <- sales |> select(-1)
 
 variance_example <- readr::read_csv("data-raw/variance_example.csv", show_col_types = FALSE) |>
   tibble::as_tibble()

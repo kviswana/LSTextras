@@ -4,8 +4,8 @@ Version: 0.1.6
 Authors@R: 
     person("Viswa", "Viswanathan", , "kv.viswana@gmail.com", role = c("aut", "cre"))
 Description: This package is meant to go with the book "Introduction to Business Statistics: A modeling Approach". 
-It extends the LSTbook package slightly by adding several illustrative data frames and tweaks the point_plot function to 
-handle the case when annot = "model" AND interval = "none". The version in LSTbook fails when interval = "none".
+  It extends the LSTbook package slightly by adding several illustrative data frames and tweaks the point_plot function to 
+  handle the case when annot = "model" AND interval = "none". The version in LSTbook fails when interval = "none".
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
