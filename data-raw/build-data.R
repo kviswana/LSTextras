@@ -55,13 +55,24 @@ sales <- sales |> select(-1)
 variance_example <- readr::read_csv("data-raw/variance_example.csv", show_col_types = FALSE) |>
   tibble::as_tibble()
 
+kiosk <- readr::read_csv("data-raw/kiosk.csv", show_col_types = FALSE) |>
+  tibble::as_tibble()
+
+kiosk_mall_beach <- readr::read_csv("data-raw/kiosk_mall_beach.csv", show_col_types = FALSE) |>
+  tibble::as_tibble()
+
+kiosk_beach_mall_temp <- readr::read_csv("data-raw/kiosk_beach_mall_temp.csv", show_col_types = FALSE) |>
+  tibble::as_tibble()
+
+
 
 
 # Save as .rda files in data/
 usethis::use_data(acct_type_balance, advertising_sales_channel, age_income_gender_buy,
                   BostonHousing, demand_expenditure_simpson, employees, exp_demand,
                   homes, ice_cream_paradox, movies, price_demand, production_cost,
-                  returns_dpo, sales_advertising, sales, variance_examples,
+                  returns_dpo, sales_advertising, sales, variance_example, kiosk,
+                  kiosk_mall_beach, kiosk_beach_mall_temp,
                   overwrite = TRUE)
 
 
